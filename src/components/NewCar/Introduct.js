@@ -83,7 +83,9 @@ class Introduct extends Component {
                     集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车</div>
                 </div>
                 <Item className="arrow-link" onClick={() => {}}>查看详情介绍 <Icon type="right"></Icon></Item>
-                <Item className="arrow-link" onClick={() => {}}>查看全部配置 <Icon type="right"></Icon></Item>
+                <Item className="arrow-link" onClick={() => {
+                    this.props.history.push({pathname:'/compare/123'});
+                }}>查看全部配置 <Icon type="right"></Icon></Item>
             </List>
         );
     }

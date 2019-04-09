@@ -121,7 +121,7 @@ class NewcarInfo extends Component {
             </li>
             <li className="flexli">
               <span className="actv-tags">送1888装潢礼包</span>
-              <Link to="">对比<em>VS</em></Link>
+              <Link to="/compare/123,456,789,001">对比<em>VS</em></Link>
             </li>
           </ul>
         </div>

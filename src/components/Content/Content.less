@@ -867,3 +867,68 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
         }
     }
 }
+
+/*compare 对比*/
+.Compare-section{
+    position: relative;
+    min-height: calc(~"100% - 13.33vmin");
+    .Compare-basic{
+        width: 100vw;
+        display: table;
+        table-layout: fixed;
+    }
+    .Compare-content{
+        width: 100vw;
+        display: table;
+        table-layout: fixed;
+    }
+    .left,.main{
+        display: table-cell;
+        overflow: hidden;
+    }
+    .left{
+        width: 26vmin;
+        vertical-align: middle;
+        .item{
+            text-indent: 15px;
+        }
+    }
+    .main{
+        .slide{
+            position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            font-size: 0;
+            display: inline-block;
+            white-space: nowrap;
+            vertical-align: top;
+            overflow: hidden;
+        }
+        .item{
+            position: relative;
+            width: 30vmin;
+            display: inline-block;
+            .carname{
+                height: 3rem;
+                margin: 20px 10px 15px;
+                font-size: .75rem;
+                font-weight: bold;
+                color: #333;
+                line-height: 1rem;
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            i.remove-car{
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                font-size: .8rem;
+                font-style: normal;
+            }
+        }
+    }
+}
