@@ -1,0 +1,96 @@
+{
+    "state": "y",
+    "rows": [{
+        "id": 1,
+        "name": "pailiang",
+        "title": "排量",
+        "data": [{
+            "title": "不限",
+            "value": "0"
+        },{
+            "title": "1.0L及以下",
+            "value": "1"
+        },{
+            "title": "1.1-1.6L",
+            "value": "2"
+        },{
+            "title": "1.7-2.1L",
+            "value": "3"
+        },{
+            "title": "2.1-2.5L",
+            "value": "4"
+        },{
+            "title": "2.6-3.0L",
+            "value": "5"
+        },{
+            "title": "3.1-4.0L",
+            "value": "6"
+        },{
+            "title": "4.0L以上",
+            "value": "7"
+        }]
+    },{
+        "id": 2,
+        "name": "biansuxiang",
+        "title": "变速箱",
+        "data": [{
+            "title": "不限",
+            "value": "0"
+        },{
+            "title": "手动",
+            "value": "1"
+        },{
+            "title": "自动",
+            "value": "2"
+        },{
+            "title": "手自一体",
+            "value": "3"
+        },{
+            "title": "无极变速",
+            "value": "4"
+        },{
+            "title": "双离合",
+            "value": "5"
+        }]
+    },{
+        "id": 3,
+        "name": "qudong",
+        "title": "驱动",
+        "data": [{
+            "title": "不限",
+            "value": "0"
+        },{
+            "title": "前驱",
+            "value": "1"
+        },{
+            "title": "后驱",
+            "value": "2"
+        },{
+            "title": "四驱",
+            "value": "3"
+        }]
+    },{
+        "id": 4,
+        "name": "sitenumber",
+        "title": "座位数",
+        "data": [{
+            "title": "不限",
+            "value": "0"
+        },{
+            "title": "2座",
+            "value": "1"
+        },{
+            "title": "4座",
+            "value": "2"
+        },{
+            "title": "5座",
+            "value": "3"
+        },{
+            "title": "6座",
+            "value": "4"
+        },{
+            "title": "7座",
+            "value": "5"
+        }]
+    }]    
+}

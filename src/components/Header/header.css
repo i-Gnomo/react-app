@@ -1,0 +1,34 @@
+.SliderBox {
+  touch-action: none;
+}
+.am-navbar {
+  height: 13.33vmin;
+  background-color: #1b1b1b;
+}
+.am-navbar .header-logo {
+  height: 6vmin;
+}
+.am-navbar .am-navbar-left {
+  padding-left: 0;
+}
+.am-navbar .am-navbar-right {
+  margin-right: 0;
+}
+.am-navbar .header-right-menu {
+  border-radius: 0;
+  border: 0;
+  width: 14vmin;
+  height: 100%;
+  background-color: #c20c0c;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.am-navbar .header-right-menu:before {
+  border: none;
+}
+html:not([data-scale]) .am-navbar .header-right-menu:before {
+  border: none;
+  border-radius: 0;
+}
