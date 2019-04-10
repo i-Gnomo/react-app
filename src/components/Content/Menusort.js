@@ -22,7 +22,7 @@ class Menusort extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      initData: '',
+      initData: data,
       show: false,
     };
     this.timmer = null;
