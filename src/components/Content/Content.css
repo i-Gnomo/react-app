@@ -836,15 +836,16 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
 }
 .Compare-section .left {
   position: relative;
-  width: 8.5rem;
+  width: 9.5rem;
   overflow: visible;
   color: #707070;
-}
-.Compare-section .left .cell {
-  text-indent: 15px;
+  vertical-align: top;
 }
 .Compare-section .Compare-basic .left {
   vertical-align: middle;
+}
+.Compare-section .Compare-basic .left .cell {
+  text-indent: 15px;
 }
 .Compare-section .Compare-basic .main .slide {
   position: relative;
@@ -859,14 +860,15 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
 }
 .Compare-section .Compare-basic .main .cell {
   position: relative;
-  width: 32vmin;
+  width: 36vmin;
   height: 7rem;
+  padding: 0 .5rem;
   display: inline-block;
   vertical-align: top;
 }
 .Compare-section .Compare-basic .main .cell .carname {
   height: 4.5rem;
-  margin: 25px 12px 15px;
+  margin: 1.5rem .5rem 1rem;
   font-size: 15px;
   color: #1b1b1b;
   line-height: 1.5rem;
@@ -894,30 +896,53 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
 .Compare-section .Compare-content .left .cell {
   display: table;
   width: 100%;
+  min-height: 3rem;
 }
 .Compare-section .Compare-content .left .cell .inner {
   position: relative;
   display: table-cell;
-  padding: 14px 0;
+  padding: .5rem .2rem .5rem 1rem;
   font-size: 15px;
   line-height: 1rem;
   vertical-align: middle;
 }
+.Compare-section .Compare-content .left .cell.c-hide {
+  display: none;
+}
+.Compare-section .Compare-content .main .slide {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  overflow: hidden;
+}
 .Compare-section .Compare-content .main .cell {
   display: table;
+  min-height: 3rem;
 }
 .Compare-section .Compare-content .main .cell .inner {
   position: relative;
   display: table-cell;
   box-sizing: border-box;
-  width: 32vmin;
-  min-width: 32vmin;
-  padding: 14px 0;
+  width: 36vmin;
+  min-width: 36vmin;
+  padding: .5rem;
   font-size: 15px;
   color: #1b1b1b;
   line-height: 1rem;
   vertical-align: middle;
   text-align: center;
+}
+.Compare-section .Compare-content .main .cell .inner .carname {
+  width: 36vmin;
+  height: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Compare-section .Compare-content .main .cell.c-hide {
+  display: none;
 }
 .Compare-section .Compare-basic .left:before,
 .Compare-section .Compare-basic .main .cell:before,
@@ -1005,7 +1030,8 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   position: relative;
 }
 .Compare-section .Compare-content .left .group .basemark {
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-top: -3rem;
+}
+.Compare-section .Compare-content .left .group:first-child .basemark {
+  display: none;
 }

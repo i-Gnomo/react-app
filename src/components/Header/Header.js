@@ -16,7 +16,7 @@ class Header extends Component{
             <div className={this.props.className}>
                 <NavBar
                 mode="dark"
-                icon={this.props.leftback === true?<Icon type="left" style={{marginLeft: '10px'}} />:null}
+                icon={this.props.leftback === true?<Icon type="left" style={{width:'22px',height:'22px',marginLeft:'10px'}} />:null}
                 onLeftClick={this.props.leftback === true?(this.props.leftClick): null}
                 rightContent={
                     this.props.righthome === true?
