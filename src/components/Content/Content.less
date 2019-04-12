@@ -872,7 +872,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
 .Compare-section{
     position: relative;
     min-height: calc(~"100% - 13.33vmin");
-    font-size: 15px;
+    font-size: 14px;
     .basic-top{
         background-color: #ffffff;
         &.fixedit{
@@ -898,7 +898,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
     }
     .left{
         position: relative;
-        width: 9.5rem;
+        width: 7.5rem;
         overflow: visible;
         color: #707070;
         vertical-align: top;
@@ -924,7 +924,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
             }
             .cell{
                 position: relative;
-                width: 36vmin;
+                width: 26vmin;
                 height: 7rem;
                 padding: 0 .5rem;
                 display: inline-block;
@@ -932,9 +932,9 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
                 .carname{
                     height: 4.5rem;
                     margin: 1.5rem .5rem 1rem;
-                    font-size: 15px;
+                    font-size: 14px;
                     color: #1b1b1b;
-                    line-height: 1.5rem;
+                    line-height: 1rem;
                     white-space: normal;
                     display: -webkit-box;
                     -webkit-line-clamp: 3;
@@ -957,6 +957,46 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
                     background-size: cover;
                 }
             }
+            .addCompareCar{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                i{
+                    display: inline-block;
+                    width: 10vmin;
+                    height: 10vmin;
+                    position: relative;
+                    margin-top: 10px;
+                    &:before{
+                        content: "";
+                        display: inline-block;
+                        width: 4px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: calc(~"5vmin - 2px");
+                        background-color: #a0a0a0;
+                    }
+                    &:after{
+                        content: "";
+                        display: inline-block;
+                        height: 4px;
+                        width: 100%;
+                        position: absolute;
+                        top: calc(~"5vmin - 2px");
+                        left: 0;
+                        background-color: #a0a0a0;
+                    }
+                }
+                p{
+                    font-size: 14px;
+                    margin: 10px 0;
+                    color: #a0a0a0;
+                }
+            }
         }
     }
     .Compare-content{
@@ -968,8 +1008,8 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
                 .inner{
                     position: relative;
                     display: table-cell;
-                    padding: .5rem .2rem .5rem 1rem;
-                    font-size: 15px;
+                    padding: .5rem .2rem .5rem .6rem;
+                    font-size: 12px;
                     line-height: 1rem;
                     vertical-align: middle;
                 }
@@ -993,16 +1033,16 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
                     position: relative;
                     display: table-cell;
                     box-sizing: border-box;
-                    width: 36vmin;
-                    min-width: 36vmin;
+                    width: 26vmin;
+                    min-width: 26vmin;
                     padding: .5rem;
-                    font-size: 15px;
+                    font-size: 14px;
                     color: #1b1b1b;
                     line-height: 1rem;
                     vertical-align: middle;
                     text-align: center;
                     .carname{
-                        width: 36vmin;
+                        width: 26vmin;
                         height: 2rem;
                         overflow: hidden;
                         display: flex;

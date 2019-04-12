@@ -33,7 +33,7 @@ const LeftItems = (props) => {
     );
   });
   if(o.length === 0){
-    o.push(<div key="0" className="cell"><div className="inner">—</div></div>)
+    o.push(<div key="0" className="cell"><div className="inner">-</div></div>)
   }
   return (<div className="group">
       <Basemark ref={setLegendRef} title={props.opts.itemtype} />
@@ -46,9 +46,23 @@ const RightItems = (props) => {
   const r = props.opts.items.map((item,index) => {
     return (<div key={index} className={props['r-group-index'] === 0 && index === 0?"cell c-hide":"cell"}>
       {item.modelexcessids.map((icm,icx) => {
-        return <div key={icx} className="inner">
-                <div className="carname" dangerouslySetInnerHTML={{__html: icm.value}}></div>
-              </div>
+        var itmHtml = [];
+        itmHtml.push(<div key={icx} className="inner">
+          <div className="carname" dangerouslySetInnerHTML={{__html: icm.value}}></div>
+        </div>);
+        if(icx === (item.modelexcessids.length - 1)){
+          if(item.modelexcessids.length<props.columnsNum){
+            for(let x = 0;x<(props.columnsNum-item.modelexcessids.length);x++){
+                itmHtml.push(<div key={icx + (x -(-1))} className="inner">
+              <div className="carname" dangerouslySetInnerHTML={{__html: "-"}}></div>
+            </div>);
+            }
+          }
+          itmHtml.push(<div key={icx + (props.columnsNum -(-1))} className="inner">
+            <div className="carname" dangerouslySetInnerHTML={{__html: "&nbsp;"}}></div>
+          </div>);
+        }
+        return itmHtml;
       })}
     </div>);
   })
@@ -78,17 +92,20 @@ class Compare extends Component {
         topFixed: false,
         isFirstRender: true
       }
+      this.timmer = null;
       this.setCompareHeader = element => {
         this.compareHeader = element;
       };
-      //车型横行真实DOM
+      this.slideBars = null;
+      //车型横行真实DOM 横向滚动容器1
       this.setSpecSlide = element => {
         this.specSlide = element;
       };
-      //配置数据横行真实DOM
+      //配置数据横行真实DOM 横向滚动容器2
       this.setInfoSlide = element => {
         this.infoSlide = element;
       };
+
       this.source = axios.CancelToken.source(); 
   }
   legendBox = null;
@@ -97,6 +114,7 @@ class Compare extends Component {
     const win = window;
     const legendHeight = this.legendBox.clientHeight;
     const fixedHeaderH = findDOMNode(this.compareHeader).clientHeight;
+
     this.setState({
       topFixed: (win.pageYOffset >= legendHeight)
     });
@@ -115,16 +133,90 @@ class Compare extends Component {
     // console.log('is fixed:',  win.pageYOffset, win.pageYOffset >= legendHeight, legendRefs);
   }
 
+  onSlideHandle = () => {
+    var $scrollTab;
+    var $tabs = document.getElementsByClassName("main");
+    var $scrollTab1 = document.getElementById("specScrollbar");
+    var $scrollTab2 = document.getElementById("infoScrollbar");
+    var touchstartX, touchstartY;
+    var scrollMax;
+    var mX,mY;
+    var moveto;
+    console.log($tabs);
+    Object.keys($tabs).forEach(function(key){
+      //手势触发
+      $tabs[key].addEventListener('touchstart', function (e) {
+        //触摸事件
+        var touch = e.targetTouches[0];
+        //触摸点位置相对于视口坐标
+        touchstartX = touch.pageX;
+        touchstartY = touch.pageY;
+        $scrollTab = $tabs[key].getElementsByClassName("slide")[0];
+        //scrollMax横向 可滚动位移值
+        scrollMax = $scrollTab.scrollWidth - $tabs[key].clientWidth;  
+      });
+      $tabs[key].addEventListener('touchmove', function (e) {
+        var touch = e.targetTouches[0];
+        mX = touch.pageX;
+        mY = touch.pageY;
+        //横向滚动
+        if (touchstartY - mY <= 10 && touchstartY - mY >= -10) {
+          var transform = $scrollTab.style.transform;
+          transform = transform.replace("translate(", "");
+          var currentX = Number(transform.substring(0, (transform.indexOf(",") - 2)));
+          moveto = -(touchstartX - mX);
+          moveto = moveto + currentX;
+          $scrollTab1.style.transitionDuration="1500ms";
+          $scrollTab2.style.transitionDuration="1500ms";
+          if ((moveto < 100 && moveto > 0) || (moveto >= (-scrollMax-100) && moveto < 0)) {
+            $scrollTab1.style.transform="translate(" + moveto + "px, 0px) translateZ(0px)";
+            $scrollTab2.style.transform="translate(" + moveto + "px, 0px) translateZ(0px)";
+          }
+          var xxx01 = setTimeout(function () {
+            $scrollTab1.style.transitionDuration="0ms";
+            $scrollTab2.style.transitionDuration="0ms";
+            clearTimeout(xxx01);
+          }, 600);
+        }
+      });
+      $tabs[key].addEventListener('touchend', function (e) {
+        $scrollTab1.style.transitionDuration="600ms";
+        $scrollTab2.style.transitionDuration="600ms";
+        if (moveto > 0) {
+          $scrollTab1.style.transform="translate(0px, 0px) translateZ(0px)";
+          $scrollTab2.style.transform="translate(0px, 0px) translateZ(0px)";
+        } else if (moveto < (-scrollMax)) {
+          $scrollTab1.style.transform="translate(" + (-scrollMax) + "px, 0px) translateZ(0px)";
+          $scrollTab2.style.transform="translate(" + (-scrollMax) + "px, 0px) translateZ(0px)";
+        }
+        var xxx02 = setTimeout(function () {
+          $scrollTab1.style.transitionDuration="0ms";
+          $scrollTab2.style.transitionDuration="0ms";
+          clearTimeout(xxx02);
+        }, 600);
+      });
+    });
+  }
+
   componentDidMount = () => {
     legendRefs = [];
     this.getData(this.props.match.params.ids);
     this.legendBox = findDOMNode(this.refs.headerRef);
-    //纵向滚动
-    window.addEventListener('scroll', this.onScrollHandle);
+    window.scrollTo(0,0);
+    
+    // this.slideBars = Object.assign(this.specSlide, this.infoSlide);
+    // console.log(this.compareHeader, this.specSlide, this.infoSlide);
 
+    this.timmer = setTimeout(() => {
+      //纵向滚动
+      window.addEventListener('scroll', this.onScrollHandle);
+      //横向滚动
+      // this.onSlideHandle();
+    },0);
 
   }
   componentWillUnmount = () => {
+    clearTimeout(this.timmer);
     legendRefs = [];
     this.source.cancel('组件卸载，取消请求');
     window.removeEventListener('scroll', this.onScrollHandle);
@@ -134,27 +226,30 @@ class Compare extends Component {
     var _this = this;
     var carsUrl = '/datalist/car_compare.json?id='+ _id;
     axios.get(carsUrl,{ cancelToken: _this.source.token }).then(function(response){
-        if(response.status === 200){
-            if(response.data){
-                var rd = response.data;
-                _this.setState({
-                  rdata: {
-                    totalitems: rd.paramitems.concat(rd.configitems),
-                    specinfo: rd.specinfo,
-                    columns: rd.columns
-                  },
-                  maxLegendLen: rd.paramitems.length - ( - rd.configitems.length),
-                  isFirstRender: false
-                });
-                window.scrollTo(0, 0);
-            }
-        }
+      if(response.status === 200){
+          if(response.data){
+              var rd = response.data;
+              _this.setState({
+                rdata: {
+                  totalitems: rd.paramitems.concat(rd.configitems),
+                  specinfo: rd.specinfo,
+                  columns: rd.columns
+                },
+                maxLegendLen: rd.paramitems.length - ( - rd.configitems.length),
+                isFirstRender: false
+              });
+              // _this.slideBars = Object.assign({}, _this.specSlide, _this.infoSlide);
+              // console.log(document.getElementsByClassName('main'));
+              // console.log(findDOMNode(_this.specSlide), _this.specSlide.innerHTML,  _this.specSlide.children);
+              _this.onSlideHandle();
+          }
+      }
     }).catch(function(error){
-        if (axios.isCancel(error)){
-            console.log('Request canceled', error.message)
-        }else{
-            console.log(error);
-        }
+      if (axios.isCancel(error)){
+          console.log('Request canceled', error.message)
+      }else{
+          console.log(error);
+      }
     });
   }
 
@@ -172,12 +267,12 @@ class Compare extends Component {
 
     const leftCells = [], rightCells = [];
     if(this.state.rdata){
-      // console.log(this.state.rdata, this.state.maxLegendLen);
       const mytotalitems = this.state.rdata.totalitems;
+      const columnsNum = this.state.rdata.columns;
       if(mytotalitems && mytotalitems.length>0){
         mytotalitems.map(function(itm,idx){
           leftCells.push(<LeftItems key={idx+"l"} opts={itm} l-group-index={idx}></LeftItems>);
-          rightCells.push(<RightItems key={idx+"r"} opts={itm} r-group-index={idx}></RightItems>);
+          rightCells.push(<RightItems key={idx+"r"} opts={itm} r-group-index={idx} columnsNum={columnsNum}></RightItems>);
           return itm;
         });
       }
@@ -187,6 +282,27 @@ class Compare extends Component {
       {!this.state.isFirstRender?<div className="Compare-section">
         <div className="Compare-header" ref={this.setCompareHeader} style={{height: "10rem"}}>
           {this.state.rdata?<div className={topFixed? "basic-top fixedit":"basic-top"}>
+            <div className="Compare-basic">
+              <div className="left">
+                <div className="cell">{this.state.rdata?this.state.rdata.totalitems[0].items[0].name:null}</div>
+              </div>
+              <div className="main" style={{touchAction: "pan-y pinch-zoom"}}>
+                <div className="slide" id="specScrollbar" ref={this.setSpecSlide} style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
+                  {this.state.rdata?this.state.rdata.totalitems[0].items[0].modelexcessids.map((myspec,myindex) => {
+                    return <div key={myindex} className="cell">
+                            <div className="carname">{myspec.value}</div>
+                            <i className="remove-car" onClick={()=>{}}></i>
+                          </div>
+                  }):null}
+                  <div key={this.state.rdata.totalitems[0].items[0].modelexcessids.length-(-1)} className="cell">
+                    <div className="addCompareCar">
+                      <i></i>
+                      <p className="addcar">添加车型</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="basemark">
               <label>{this.state.legendName}</label>
               <p>
@@ -195,21 +311,6 @@ class Compare extends Component {
                 <span className="nothing">无</span>
               </p>
             </div>
-            <div className="Compare-basic">
-              <div className="left">
-                <div className="cell">{this.state.rdata?this.state.rdata.totalitems[0].items[0].name:null}</div>
-              </div>
-              <div className="main" style={{touchAction: "pan-y pinch-zoom"}}>
-                <div className="slide" ref={this.setSpecSlide}>
-                  {this.state.rdata?this.state.rdata.totalitems[0].items[0].modelexcessids.map((myspec,myindex) => {
-                    return <div key={myindex} className="cell">
-                            <div className="carname"><Link to="">{myspec.value}</Link></div>
-                            <i className="remove-car" onClick={()=>{}}></i>
-                          </div>
-                  }):null}
-                </div>
-              </div>
-            </div>
           </div>:null}
         </div>
         <div className="Compare-content">
@@ -217,7 +318,7 @@ class Compare extends Component {
             {leftCells}
           </div>
           <div className="main" style={{touchAction: "pan-y pinch-zoom"}}>
-            <div className="slide" ref={this.setInfoSlide}>
+            <div className="slide" id="infoScrollbar" ref={this.setInfoSlide} style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
               {rightCells}
             </div>
           </div>
