@@ -84,7 +84,7 @@ class Introduct extends Component {
                 </div>
                 <Item className="arrow-link" onClick={() => {}}>查看详情介绍 <Icon type="right"></Icon></Item>
                 <Item className="arrow-link" onClick={() => {
-                    this.props.history.push({pathname:'/compare/123'});
+                    this.props.history.push({pathname:'/carconfig/123'});
                 }}>查看全部配置 <Icon type="right"></Icon></Item>
             </List>
         );

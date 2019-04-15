@@ -41,16 +41,16 @@ class NewcarInfo extends Component {
   }
 
   handleToggle = (mode) => {
-    //切换下拉
-    console.log(mode);
+    //切换车型下拉列表显示或者隐藏
+    // console.log(mode);
     this.setState({
       selectShow: mode
     });
   }
 
   handleSelect = (values) => {
-    //选择下拉点击选择
-    console.log(values);
+    //点击车型下拉列表选择显示车型
+    // console.log(values);
     this.setState({
       newcarSelected: values,
       selectShow: false,

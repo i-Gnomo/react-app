@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
 
+//多个车型时 车型列表
 class SelectCar extends Component {
     render(){
         /**
@@ -11,7 +12,7 @@ class SelectCar extends Component {
             show: false
          */
         const { show, current, listdata } = this.props;
-        console.log(this.props);
+        // console.log(this.props);
         return (<div className="selectlist-car">
             <div className="selected-val" onClick={() => {this.props.handleToggle(!show)}}>
                 <p>{current.name}</p>

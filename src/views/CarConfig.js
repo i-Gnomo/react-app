@@ -4,7 +4,7 @@ import { findDOMNode } from 'react-dom';
 import axios from "axios";
 import IScroll from "iscroll-zoom-probe";
 
-import Header from './../components/Header/Header';
+import Header from '../components/Header/Header';
 
 //legend标签
 class Basemark extends Component{
@@ -38,7 +38,6 @@ const LeftItems = (props) => {
   }
   return (<div className="group">
       <Basemark ref={setLegendRef} title={props.opts.itemtype} />
-      {/* <Basemark ref={()=>{return "legend"+props['l-group-index']}} title={props.opts.itemtype} /> */}
       {o}
     </div>);
 }
@@ -59,9 +58,6 @@ const RightItems = (props) => {
             </div>);
             }
           }
-          itmHtml.push(<div key={icx + (props.columnsNum -(-1))} className="inner">
-            <div className="carname" dangerouslySetInnerHTML={{__html: "&nbsp;"}}></div>
-          </div>);
         }
         return itmHtml;
       })}
@@ -84,7 +80,7 @@ function getPoint(obj) { //获取某元素以浏览器左上角为原点的坐�
   }
 }  
 
-class Compare extends Component {
+class CarConfig extends Component {
   constructor(props){
       super(props);
       this.state = {
@@ -147,7 +143,7 @@ class Compare extends Component {
 
   componentDidMount = () => {
     legendRefs = [];
-    this.getData(this.props.match.params.ids);
+    this.getData(this.props.match.params.sid);
     this.legendBox = findDOMNode(this.refs.headerRef);
     window.scrollTo(0,0);
 
@@ -158,9 +154,9 @@ class Compare extends Component {
 
   }
   componentWillUnmount = () => {
-    clearTimeout(this.timmer);
     legendRefs = [];
     this.source.cancel('组件卸载，取消请求');
+    clearTimeout(this.timmer);
     window.removeEventListener('scroll', this.onScrollHandle);
   }
 
@@ -202,8 +198,8 @@ class Compare extends Component {
     const topFixed = this.state.topFixed;
 
     //车型对比id
-    // const cids = this.props.match.params.ids;
-    // console.log('车型id',cids, legendRefs);
+    // const sid = this.props.match.params.sid;
+    // console.log('车系id',sid);
 
     const leftCells = [], rightCells = [];
     if(this.state.rdata){
@@ -221,7 +217,7 @@ class Compare extends Component {
     }
     return (<div className="Page" style={{padding:0}}>
       {/*车型对比头部 */}
-      <Header ref="headerRef" className="Page-header" title="车型对比" leftback={true} leftClick={this.goBack}></Header>
+      <Header ref="headerRef" className="Page-header" title="车辆配置" leftback={true} leftClick={this.goBack}></Header>
       {!this.state.isFirstRender?<div className="Compare-section">
         {/*对比头部 显示legend 和对比的几个车型 */}
         <div className="Compare-header" ref={this.setCompareHeader} style={{height: "10rem"}}>
@@ -237,15 +233,8 @@ class Compare extends Component {
                   {this.state.rdata?this.state.rdata.totalitems[0].items[0].modelexcessids.map((myspec,myindex) => {
                     return <div key={myindex} className="cell">
                             <div className="carname">{myspec.value}</div>
-                            <i className="remove-car" onClick={()=>{}}></i>
                           </div>
                   }):null}
-                  <div key={this.state.rdata.totalitems[0].items[0].modelexcessids.length-(-1)} className="cell">
-                    <div className="addCompareCar">
-                      <i></i>
-                      <p className="addcar">添加车型</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -275,4 +264,4 @@ class Compare extends Component {
   }
 }
 
-export default Compare
+export default CarConfig

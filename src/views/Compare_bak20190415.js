@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 // import { Link } from 'react-router-dom';
 import axios from "axios";
-import IScroll from "iscroll-zoom-probe";
 
 import Header from './../components/Header/Header';
 
@@ -74,7 +73,7 @@ function getPoint(obj) { //获取某元素以浏览器左上角为原点的坐�
   var t = obj.offsetTop; //获取该元素对应父容器的上边距  
   var l = obj.offsetLeft; //对应父容器的上边距  
   //判断是否有父容器，如果存在则累加其边距  
-  while (obj = obj.offsetParent) {
+  while (obj === obj.offsetParent) {
       t += obj.offsetTop; //叠加父容器的上边距  
       l += obj.offsetLeft; //叠加父容器的左边距  
   }  
@@ -89,6 +88,7 @@ class Compare extends Component {
       super(props);
       this.state = {
         legendName: '基本参数',
+        maxLegendLen: 0,
         topFixed: false,
         isFirstRender: true
       }
@@ -96,25 +96,35 @@ class Compare extends Component {
       this.setCompareHeader = element => {
         this.compareHeader = element;
       };
+      this.slideBars = null;
+      //车型横行真实DOM 横向滚动容器1
+      this.setSpecSlide = element => {
+        this.specSlide = element;
+      };
+      //配置数据横行真实DOM 横向滚动容器2
+      this.setInfoSlide = element => {
+        this.infoSlide = element;
+      };
 
       this.source = axios.CancelToken.source(); 
   }
   legendBox = null;
 
   onScrollHandle = (event) => {
-    //纵向滚动
-    event.preventDefault();
     const win = window;
     const legendHeight = this.legendBox.clientHeight;
     const fixedHeaderH = findDOMNode(this.compareHeader).clientHeight;
+
+    this.setState({
+      topFixed: (win.pageYOffset >= legendHeight)
+    });
     legendRefs.map(function(myref, index){
       if(index > 0){
         let y1 = getPoint(findDOMNode(legendRefs[index-1])).y;
         let y2 = getPoint(findDOMNode(myref)).y;
         if((y1 - fixedHeaderH)<=win.pageYOffset && (y2 - fixedHeaderH)>win.pageYOffset){
           this.setState({
-            legendName: legendRefs[index-1].props.title,
-            topFixed: (win.pageYOffset >= legendHeight)
+            legendName: legendRefs[index-1].props.title
           })
         }
       }
@@ -124,24 +134,60 @@ class Compare extends Component {
   }
 
   onSlideHandle = () => {
-    //横向滚动 使用IScroll 5.2.0插件
-    var $scroll1 = new IScroll("#specScrollbar", {
-        probeType: 3,
-        eventPassthrough: !0,
-        scrollX: !0,
-        scrollY: !1
-    }),
-    $scroll2 = new IScroll("#infoScrollbar", {
-        probeType: 3,
-        eventPassthrough: !0,
-        scrollX: !0,
-        scrollY: !1
-    });
-    $scroll1.on("scroll", function () {
-      $scroll2.scrollTo(this.x, 0)
-    });
-    $scroll2.on("scroll", function () {
-      $scroll1.scrollTo(this.x, 0)
+    var $scrollTab;
+    var $tabs = document.getElementsByClassName("main");
+    var $scrollTab1 = document.getElementById("specScrollbar");
+    var $scrollTab2 = document.getElementById("infoScrollbar");
+    var touchstartX, touchstartY;
+    var scrollMax;
+    var mX,mY;
+    var moveto;
+    console.log($tabs);
+    Object.keys($tabs).forEach(function(key){
+      //手势触发
+      $tabs[key].addEventListener('touchstart', function (e) {
+        //触摸事件
+        var touch = e.targetTouches[0];
+        //触摸点位置相对于视口坐标
+        touchstartX = touch.pageX;
+        touchstartY = touch.pageY;
+        $scrollTab = $tabs[key].getElementsByClassName("slide")[0];
+        //scrollMax横向 可滚动位移值
+        scrollMax = $scrollTab.scrollWidth - $tabs[key].clientWidth;  
+      });
+      $tabs[key].addEventListener('touchmove', function (e) {
+        var touch = e.targetTouches[0];
+        mX = touch.pageX;
+        mY = touch.pageY;
+        //横向滚动
+        if (touchstartY - mY <= 15 && touchstartY - mY >= -15) {
+          var transform = $scrollTab.style.transform;
+          transform = transform.replace("translate(", "");
+          var currentX = Number(transform.substring(0, (transform.indexOf(",") - 2)));
+          moveto = -(touchstartX - mX)/4.8;
+          moveto = moveto + currentX;
+          if (moveto <= (100) && moveto >= (-scrollMax - 100)) {
+            $scrollTab1.style.transform="translate(" + moveto + "px, 0px) translateZ(0px)";
+            $scrollTab2.style.transform="translate(" + moveto + "px, 0px) translateZ(0px)";
+          }
+        }
+      });
+      $tabs[key].addEventListener('touchend', function (e) {
+        // $scrollTab1.style.transitionDuration="600ms";
+        // $scrollTab2.style.transitionDuration="600ms";
+        if (moveto > 0) {
+          $scrollTab1.style.transform="translate(0px, 0px) translateZ(0px)";
+          $scrollTab2.style.transform="translate(0px, 0px) translateZ(0px)";
+        } else if (moveto < (-scrollMax)) {
+          $scrollTab1.style.transform="translate(" + (-scrollMax) + "px, 0px) translateZ(0px)";
+          $scrollTab2.style.transform="translate(" + (-scrollMax) + "px, 0px) translateZ(0px)";
+        }
+        // var xxx02 = setTimeout(function () {
+        //   $scrollTab1.style.transitionDuration="0ms";
+        //   $scrollTab2.style.transitionDuration="0ms";
+        //   clearTimeout(xxx02);
+        // }, 600);
+      });
     });
   }
 
@@ -150,10 +196,15 @@ class Compare extends Component {
     this.getData(this.props.match.params.ids);
     this.legendBox = findDOMNode(this.refs.headerRef);
     window.scrollTo(0,0);
+    
+    // this.slideBars = Object.assign(this.specSlide, this.infoSlide);
+    // console.log(this.compareHeader, this.specSlide, this.infoSlide);
 
     this.timmer = setTimeout(() => {
       //纵向滚动
       window.addEventListener('scroll', this.onScrollHandle);
+      //横向滚动
+      // this.onSlideHandle();
     },0);
 
   }
@@ -165,7 +216,6 @@ class Compare extends Component {
   }
 
   getData = (_id) => {
-    //获取数据
     var _this = this;
     var carsUrl = '/datalist/car_compare.json?id='+ _id;
     axios.get(carsUrl,{ cancelToken: _this.source.token }).then(function(response){
@@ -178,9 +228,12 @@ class Compare extends Component {
                   specinfo: rd.specinfo,
                   columns: rd.columns
                 },
+                maxLegendLen: rd.paramitems.length - ( - rd.configitems.length),
                 isFirstRender: false
               });
-              //横向滚动
+              // _this.slideBars = Object.assign({}, _this.specSlide, _this.infoSlide);
+              // console.log(document.getElementsByClassName('main'));
+              // console.log(findDOMNode(_this.specSlide), _this.specSlide.innerHTML,  _this.specSlide.children);
               _this.onSlideHandle();
           }
       }
@@ -211,29 +264,23 @@ class Compare extends Component {
       const columnsNum = this.state.rdata.columns;
       if(mytotalitems && mytotalitems.length>0){
         mytotalitems.map(function(itm,idx){
-          //配置详情 左内容
           leftCells.push(<LeftItems key={idx+"l"} opts={itm} l-group-index={idx}></LeftItems>);
-          //配置详情 右内容
           rightCells.push(<RightItems key={idx+"r"} opts={itm} r-group-index={idx} columnsNum={columnsNum}></RightItems>);
           return itm;
         });
       }
     }
     return (<div className="Page" style={{padding:0}}>
-      {/*车型对比头部 */}
       <Header ref="headerRef" className="Page-header" title="车型对比" leftback={true} leftClick={this.goBack}></Header>
       {!this.state.isFirstRender?<div className="Compare-section">
-        {/*对比头部 显示legend 和对比的几个车型 */}
         <div className="Compare-header" ref={this.setCompareHeader} style={{height: "10rem"}}>
-          {/*对比头部内容 页面纵向滚动时固定到顶部不动 */}
           {this.state.rdata?<div className={topFixed? "basic-top fixedit":"basic-top"}>
             <div className="Compare-basic">
               <div className="left">
                 <div className="cell">{this.state.rdata?this.state.rdata.totalitems[0].items[0].name:null}</div>
               </div>
-              <div className="main" id="specScrollbar" style={{touchAction: "pan-y pinch-zoom"}}>
-                {/*车型可横向滚动 */}
-                <div className="slide" style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
+              <div className="main" style={{touchAction: "pan-y pinch-zoom"}}>
+                <div className="slide" id="specScrollbar" ref={this.setSpecSlide} style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
                   {this.state.rdata?this.state.rdata.totalitems[0].items[0].modelexcessids.map((myspec,myindex) => {
                     return <div key={myindex} className="cell">
                             <div className="carname">{myspec.value}</div>
@@ -259,13 +306,12 @@ class Compare extends Component {
             </div>
           </div>:null}
         </div>
-        {/*对比 配置详情*/}
         <div className="Compare-content">
           <div className="left">
             {leftCells}
           </div>
-          <div className="main" id="infoScrollbar" style={{touchAction: "pan-y pinch-zoom"}}>
-            <div className="slide" style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
+          <div className="main" style={{touchAction: "pan-y pinch-zoom"}}>
+            <div className="slide" id="infoScrollbar" ref={this.setInfoSlide} style={{transform: "translate(0px, 0px) translateZ(0px)"}}>
               {rightCells}
             </div>
           </div>

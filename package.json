@@ -5,6 +5,8 @@
   "dependencies": {
     "antd-mobile": "^2.2.8",
     "axios": "^0.18.0",
+    "iscroll": "^5.2.0",
+    "iscroll-zoom-probe": "^5.2.0-snapshot",
     "react": "^16.8.2",
     "react-app-rewired": "2.0.2-next.0",
     "react-content-loader": "^4.2.1",

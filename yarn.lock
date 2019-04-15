@@ -5311,6 +5311,16 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   resolved "http://registry.npm.taobao.org/isarray/download/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
+iscroll-zoom-probe@^5.2.0-snapshot:
+  version "5.2.0-snapshot"
+  resolved "http://registry.npm.taobao.org/iscroll-zoom-probe/download/iscroll-zoom-probe-5.2.0-snapshot.tgz#27860d0ca47c2b5f862a4a6ae5b59e7f422ef177"
+  integrity sha1-J4YNDKR8K1+GKkpq5bWef0Iu8Xc=
+
+iscroll@^5.2.0:
+  version "5.2.0"
+  resolved "http://registry.npm.taobao.org/iscroll/download/iscroll-5.2.0.tgz#d513307088b5b25a4f893af474804468481829c8"
+  integrity sha1-1RMwcIi1slpPiTr0dIBEaEgYKcg=
+
 isemail@3.x.x:
   version "3.2.0"
   resolved "http://registry.npm.taobao.org/isemail/download/isemail-3.2.0.tgz#59310a021931a9fb06bbb51e155ce0b3f236832c"
