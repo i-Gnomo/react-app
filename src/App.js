@@ -15,6 +15,7 @@ import BrandList from './views/BrandList';
 import FilterList from './views/FilterList';
 import Compare from './views/Compare';
 import CarConfig from './views/CarConfig';
+import CarCounter from './views/CarCounter';
 
 class App extends Component {
 
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path="/filter/" component={FilterList} />
             <Route path="/compare/:ids" component={Compare} />
             <Route path="/carconfig/:sid" component={CarConfig} />
+            <Route path="/carcounter/:specid" component={CarCounter} />
           </div>
         </Router>
     );

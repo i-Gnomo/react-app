@@ -1,0 +1,61 @@
+.Sms-layer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.Sms-layer .Sms-layer-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1b1b1b;
+  opacity: .5;
+}
+.Sms-layer .Sms-layer-content {
+  padding: 15px;
+  padding-top: 3.2rem;
+  margin: 0 15px;
+  background-color: #ffffff;
+  position: relative;
+  margin-top: 50%;
+  min-height: 110px;
+}
+.Sms-layer .Sms-layer-content .Get-code-btn {
+  width: calc(40vmin - 15px);
+  background-color: #c20c0c;
+  color: #ffffff;
+}
+.Sms-layer .Sms-layer-content .Get-code-btn.gray-disabled {
+  background-color: #d2d2d2;
+  color: #707070;
+}
+.Sms-layer .Sms-layer-content .Sms-layer-close {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url("/images/ic-pop-close.png") center center no-repeat;
+  background-size: 34%;
+}
+.Sms-layer .smscodeerror {
+  line-height: 32px;
+  color: #e60012;
+}
+.Sms-layer .smscodeerror i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-style: normal;
+  background-color: #e60012;
+  color: #ffffff;
+  border-radius: 50%;
+  margin-right: 5px;
+}

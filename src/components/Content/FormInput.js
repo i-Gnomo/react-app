@@ -41,12 +41,13 @@ class FormInput extends Component {
     render() {
         const {ftype, placeholder, errormsg} = this.props;
         return (
-            <div className="input-text" style={this.props.style || {}}>
+            <div className="input-text" style={this.props.style || {}} onClick={() => this.inputRef.focus()}>
                 <InputItem
                     type={ftype}
                     placeholder={placeholder}
                     error={this.state.hasError}
                     onErrorClick={this.onErrorClick.bind(this,errormsg)}
+                    ref={el => this.inputRef = el}
                     onChange={this.onChange.bind(this)}
                     value={this.state.value}
                 ></InputItem>

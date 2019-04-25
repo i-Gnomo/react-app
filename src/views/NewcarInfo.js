@@ -5,7 +5,7 @@ import './../components/Content/Content.css';
 
 import Header from './../components/Header/Header';
 import SelectCar from './../components/NewCar/SelectCar';
-import MyForm from './../components/Content/MyForm';
+import FixedForm from './../components/Content/FixedForm';
 import ListBox from './../components/Content/ListBox';
 import Introduct from './../components/NewCar/Introduct';
 import BuyPlan from '../components/NewCar/BuyPlan';
@@ -125,8 +125,7 @@ class NewcarInfo extends Component {
             </li>
           </ul>
         </div>
-        <WhiteSpace size="lg" style={styler.spacebg}/>
-        <MyForm></MyForm>
+        
         <WhiteSpace size="lg" style={styler.spacebg}/>
         <div className="index-promotion-info">
             <h3 style={{fontSize: "18px"}}>新春福利，下单送红包。</h3>
@@ -157,7 +156,7 @@ class NewcarInfo extends Component {
         }}></ListBox>
 
         {/*立即获取优惠 */}
-        
+        <FixedForm></FixedForm>
       </div>
     )
   }

@@ -867,7 +867,6 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
         }
     }
 }
-
 /*compare 对比*/
 .Compare-section{
     position: relative;
@@ -1154,6 +1153,361 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after{
         &:first-child{
             .basemark{
                 display: none;
+            }
+        }
+    }
+}
+
+/*carcounter 购车方案 计算器*/
+.Counter-section{
+    position: relative;
+    font-size: 16px;
+    background-color: #ffffff;
+    .Counter-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 180px;
+        background-color: #c20c0c;
+        border-style: solid;
+        border-color: #c20c0c;
+        border-width: 0 30px 0px 30px;
+        border-radius: 0 0 50% 50%;
+        margin-left: -30px;
+    }
+    .Counter-tag{
+        display: flex;
+        width: 68%;
+        margin: 0 18%;
+        text-align: center;
+        line-height: 2rem;
+        padding: 1.5rem 0 .5rem;
+        color: #ffffff;
+        .tag-d{
+            position: relative;
+            width: 50%;
+            &:after{
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 4px;
+                border-radius: 2px;
+                background-color: #ffffff;
+                position: absolute;
+                bottom: -.5rem;
+                left: 50%;
+                margin-left: 0;
+                transition: all .3s;
+            }
+            &.active{
+                font-size: 18px;
+               &:after{
+                    width: 2rem;
+                    margin-left: -1rem;
+               }
+            }
+        }
+    }
+    .Counter-content{
+        position: relative;
+        padding: 25px 15px 0;
+    }
+    .price-box{
+        padding: 1.5rem 0;
+        border-radius: 5px;
+        background-color: #ffffff;
+        box-shadow: 0 0px 4px rgba(0,0,0,.2);
+        p{
+            margin: 0;
+        }
+        .price-all{
+            font-size: 2.5rem;
+            text-align: center;
+            p{
+                margin-top: .6rem;
+            }
+        }
+        .ft-light{
+            font-size: 14px;
+            color: #707070;
+            text-align: center;
+        }
+        .price-part-3{
+            margin-top: 1rem;
+            display: flex;
+            li{
+                flex: 1 1 auto;
+                text-align: center;
+                font-size: 1.2rem;
+                p{
+                    margin-top: .5rem;
+                }
+            }
+        }
+    }
+    .counter-list{
+        padding: 20px 0 0;
+    }
+    .counter-item:not(:last-child){
+        border-bottom: 1px #eeeeee solid;
+    }
+    .counter-item-title{
+        line-height: 3rem;
+        display: flex;
+        justify-content: space-between;
+        .ic-arrow{
+            display: inline-block;
+            width: 15px;
+            height: 8px;
+            background: url("/images/ic-arrow.png") center center no-repeat;
+            background-size: auto 100%;
+            transform: rotate(0deg);
+            margin: 0 0 0 10px;
+            vertical-align: top;
+            margin-top: 1.3rem;
+            transition: transform .3s;
+            &.open{
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .counter-panel{
+        height: 0;
+        line-height: 2.5rem;
+        padding: 0 1rem 0 .5rem;
+        color: #707070;
+        overflow: hidden;
+        transition: all .6s;
+        &[open]{
+            height: auto;
+        }
+        .ct-cell.checked{
+            position: relative;
+            color: #e60012;
+            &:after{
+                content: "";
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                background: url("/images/ic-checked-right.png") center center no-repeat;
+                background-size: 100% auto;
+                margin-top: .5rem;
+                position: absolute;
+                right: 0px;
+            }
+        }
+        .counter-row{
+            display: flex;
+            justify-content: space-between;
+            .r-left-tit{
+                max-width: 80%;
+                line-height: 1.2rem;
+                display: flex;
+                align-items: center;
+                i{
+                    font-size: 14px;
+                    font-style: normal;
+                    margin-left: 5px;
+                    color: #a0a0a0;
+                    vertical-align: middle;
+                    margin-top: 2px;
+                }
+                .r-cell-check{
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    background: #d2d2d2;
+                    margin: 0 8px 0 0;
+                    border-radius: 3px;
+                    &.checked{
+                        background: url("/images/ic-checked-left.png") center center no-repeat #c20c0c;
+                        background-size: cover;
+                    }
+                }
+            }
+            .r-right-price{
+                position: relative;
+                span{
+                    margin-right: 9px;
+                }
+                .ic-arrow-select{
+                    display: inline-block;
+                    width: 8px;
+                    height: 14px;
+                    background: url("/images/ic-arrow-select.png") center center no-repeat;
+                    background-size: auto 100%;
+                    position: absolute;
+                    top: .9rem;
+                    right: -.6rem;
+                }
+            }
+        }
+    }
+}
+.selected-spec{
+    position: relative;
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px #eeeeee solid;
+    font-size: 16px;
+    p{
+        width: calc(~"100% - 25px");
+        margin: 0;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    i{
+        display: inline-block;
+        width: 15px;
+        height: 8px;
+        background: url("/images/ic-arrow.png") center center no-repeat;
+        background-size: auto 100%;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        margin: 0 0 0 10px;
+        vertical-align: top;
+        margin-top: 1.3rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+.selected-price{
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 16px;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    .input-wraper{
+        width: calc(~"100% - 5.4rem");
+        height: 3rem;
+    }
+    .am-input-item{
+        height: 1.6rem!important;
+        min-height: auto;
+        margin: 0;
+        border: 0;
+        outline: none;
+        line-height: 1.6rem;
+        padding: .7rem 0!important;
+        display: flex;
+        text-align: left;
+        .am-list-line{
+            padding: 0;
+        }
+    }
+    .am-list-item .am-input-control input{
+        text-align: right;
+    }
+    .am-list-item .am-input-clear{
+        margin-left: 5px;
+    }
+}
+.Pop-cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .pop-cover-bg{
+        background-color: #1b1b1b;
+        opacity: .5;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .pop-list{
+        font-size: 16px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffff;
+        .pop-close{
+            display: inline-block;
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: 0;
+            right: 3px;
+            background: url("/images/ic-pop-close.png") center center no-repeat;
+            background-size: 34%;
+        }
+        .pop-title{
+            font-size: 17px;
+            line-height: 3rem;
+            text-align: center;
+            border-bottom: 1px #eeeeee solid;
+        }
+        .pop-content{
+            line-height: 3rem;
+            padding: 0 15px;
+            color: #1b1b1b;
+            height: auto;
+            max-height: 80%;
+            height: auto;
+            overflow-y: scroll;
+            .pop-list-row:not(:last-child){
+                border-bottom: 1px #eeeeee solid;
+            }
+            .pop-list-row.checked{
+                position: relative;
+                color: #e60012;
+                &:after{
+                    content: "";
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    background: url("/images/ic-checked-right.png") center center no-repeat;
+                    background-size: 100% auto;
+                    margin-top: .5rem;
+                    position: absolute;
+                    right: 0px;
+                }
+            }
+        }
+    }
+}
+
+.fixed-form{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px #e8e8e8 solid;
+    box-shadow: 0 1px 1px #e8e8e8;
+    .wrap-form{
+        display: flex;
+        .input-text .am-list-item.am-input-item{
+            height: 100%;
+        }
+        .input-text{
+            border: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -o-border-radius: 0;
+            background-color: transparent;
+            width: 50%;
+        }
+        .button-box{
+            margin-top: -1px;
+            width: 50%;
+            background-color: #c20c0c;
+            color: #ffffff;
+            border: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -o-border-radius: 0;
+            &:before{
+                border: none!important;
             }
         }
     }

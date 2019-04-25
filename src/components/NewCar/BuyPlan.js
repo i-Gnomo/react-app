@@ -112,7 +112,7 @@ class BuyPlan extends Component {
                                 <span>期数:<em>{item.months}</em>期</span>
                             </div>
                             <Item className="arrow-link" onClick={() => {
-                                this.props.history.push({pathname:'/newcarinfo/'+item.id});
+                                this.props.history.push({pathname:'/carcounter/'+item.car_model_id});
                             }}>具体购车方案 <Icon type="right"></Icon></Item>
                         </div>
                     </Item>;
