@@ -68,7 +68,7 @@ class Introduct extends Component {
                     :false
                 } className="introduct-list">
                 <div className="NewsInfo" style={{padding:"6px 15px 15px"}}>
-                    <img style={{maxWidth: "100%"}} src="/images/huodong.jpg" alt="介绍"></img>
+                    <img style={{maxWidth: "100%"}} src="images/huodong.jpg" alt="介绍"></img>
                     <h4 style={{
                         fontWeight: "normal",
                         fontSize: "16px",
@@ -79,7 +79,7 @@ class Introduct extends Component {
                         lineHeight: "1.5",
                         fontSize:"16px"
                     }}>111国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，
-                    <img style={{maxWidth: "100%",margin:"10px 0"}} src="/images/huodong.jpg" alt="介绍" />
+                    <img style={{maxWidth: "100%",margin:"10px 0"}} src="images/huodong.jpg" alt="介绍" />
                     集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2国内领先的汽车互联网企业易车</div>
                 </div>
                 <Item className="arrow-link" onClick={() => {}}>查看详情介绍 <Icon type="right"></Icon></Item>

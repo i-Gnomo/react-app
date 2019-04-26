@@ -17,7 +17,7 @@ class BrandList extends Component{
             showTagName: '',
         }
         this.timmer = null;
-        this.brandUrl = '/datalist/carbrand.json';
+        this.brandUrl = 'datalist/carbrand.json';
         this.source = axios.CancelToken.source();
     }
 

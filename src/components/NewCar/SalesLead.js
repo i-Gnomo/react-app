@@ -24,16 +24,16 @@ const saleGuide = [{
     telphone: "13123568798",
     starLevel: "4",
     legend: "JEEP新车金牌销售顾问。",
-    picture: "",
-    erweima: "/images/saler01_erweima.jpg"
+    picture: "images/saler01.jpg",
+    erweima: "images/saler01_erweima.jpg"
 },{
     id: "101",
     name: "小苗",
     telphone: "13123456789",
     starLevel: "4.6",
     legend: "捷诚，竭诚为您服务。",
-    picture: "/images/saler01.jpg",
-    erweima: "/images/saler01_erweima.jpg"
+    picture: "images/saler01.jpg",
+    erweima: "images/saler01_erweima.jpg"
 }];
 
 class SalesLead extends Component {

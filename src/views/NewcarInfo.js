@@ -86,7 +86,7 @@ class NewcarInfo extends Component {
               style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
               >
               <img
-                  src={`/images/${val}.jpg`}
+                  src={`images/${val}.jpg`}
                   alt=""
                   style={{ width: '100%', verticalAlign: 'top' }}
                   onLoad={() => {
@@ -134,23 +134,23 @@ class NewcarInfo extends Component {
 
         <WhiteSpace size="lg" style={styler.spacebg}/>
         {/*介绍/配置 */}
-        <Introduct dataurl="/datalist/newcarlist.json" showTitle={true} options={{"title":"介绍/配置"}}></Introduct>
+        <Introduct dataurl="datalist/newcarlist.json" showTitle={true} options={{"title":"介绍/配置"}}></Introduct>
 
         <WhiteSpace size="lg" style={styler.spacebg}/>
         {/*购车方案 */}
-        <BuyPlan dataurl="/datalist/newcarlist.json" showTitle={true} options={{"title":"购车方案"}}></BuyPlan>
+        <BuyPlan dataurl="datalist/newcarlist.json" showTitle={true} options={{"title":"购车方案"}}></BuyPlan>
 
         <WhiteSpace size="lg" style={styler.spacebg}/>
         {/*销售顾问 */}
-        <SalesLead dataurl="/datalist/newcarlist.json" showTitle={true} options={{"title":"销售顾问"}}></SalesLead>
+        <SalesLead dataurl="datalist/newcarlist.json" showTitle={true} options={{"title":"销售顾问"}}></SalesLead>
 
         <WhiteSpace size="lg" style={styler.spacebg}/>
         {/*车辆问答 */}
-        <Question dataurl="/datalist/newcarlist.json" showTitle={true} options={{"title":"车辆问答"}}></Question>
+        <Question dataurl="datalist/newcarlist.json" showTitle={true} options={{"title":"车辆问答"}}></Question>
 
         <WhiteSpace size="lg" style={styler.spacebg}/>
         {/*为您推荐 */}
-        <ListBox dataurl="/datalist/newcarlist.json" showTitle={true} options={{
+        <ListBox dataurl="datalist/newcarlist.json" showTitle={true} options={{
             "listtype":"newcar",
             "title":"为您推荐"
         }}></ListBox>

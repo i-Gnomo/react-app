@@ -11,26 +11,26 @@ const barsArr = [{
     title:"首页",
     key:"home",
     myhref:'/',
-    icon:"/images/icons-home.png",
-    selectedIcon:"/images/icons-home-current.png"
+    icon:"images/icons-home.png",
+    selectedIcon:"images/icons-home-current.png"
 },{
     title:"新车",
     key:"newcar",
     myhref:'/newcar/',
-    icon:"/images/icons-newcar.png",
-    selectedIcon:"/images/icons-newcar-current.png"
+    icon:"images/icons-newcar.png",
+    selectedIcon:"images/icons-newcar-current.png"
 },{
     title:"资讯",
     key:"news",
     myhref:'/news/',
-    icon:"/images/icons-news.png",
-    selectedIcon:"/images/icons-news-current.png"
+    icon:"images/icons-news.png",
+    selectedIcon:"images/icons-news-current.png"
 },{
     title:"活动",
     key:"actives",
     myhref:'/actives/',
-    icon:"/images/icons-actives.png",
-    selectedIcon:"/images/icons-actives-current.png"
+    icon:"images/icons-actives.png",
+    selectedIcon:"images/icons-actives-current.png"
 }];
 class MyTabBar extends Component{
     constructor(props,context){

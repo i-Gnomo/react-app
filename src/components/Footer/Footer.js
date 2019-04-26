@@ -4,7 +4,7 @@ class Footer extends Component{
     render() {
         return (
             <div className="footer">
-                <img alt="" style={{width:"22vmin"}} src="/images/footer-logo.png" />
+                <img alt="" style={{width:"22vmin"}} src="images/footer-logo.png" />
                 <div className="telinfo">
                     <p>淄博万盛 - 江淮汽车4S店</p>
                     <span>销售热线：0571-87030075</span>

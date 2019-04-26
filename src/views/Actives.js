@@ -33,7 +33,7 @@ class Actives extends Component {
       listdata_OVER: [],
       listdata_ALL: [],
     }
-    this.actvUrl = '/datalist/activeslist.json';
+    this.actvUrl = 'datalist/activeslist.json';
     this.source = axios.CancelToken.source();
   }
 
@@ -99,31 +99,17 @@ class Actives extends Component {
                 :null
               }
               <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
                 <h4>农业银行联合浙江车市网举办汽车节</h4>
                 <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
               </div>
               <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
                 <h4>农业银行联合浙江车市网举办汽车节</h4>
                 <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
               </div>
               <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
-                <h4>农业银行联合浙江车市网举办汽车节</h4>
-                <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
-              </div>
-
-            </div>
-            <div style={styler.tabBox}>
-
-              <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
-                <h4>农业银行联合浙江车市网举办汽车节</h4>
-                <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
-              </div>
-              <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
                 <h4>农业银行联合浙江车市网举办汽车节</h4>
                 <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
               </div>
@@ -132,12 +118,26 @@ class Actives extends Component {
             <div style={styler.tabBox}>
 
               <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
                 <h4>农业银行联合浙江车市网举办汽车节</h4>
                 <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
               </div>
               <div className="EachActv">
-                <div><img alt="农业银行联合浙江车市网举办汽车节" src="/images/huodong.jpg" /></div>
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
+                <h4>农业银行联合浙江车市网举办汽车节</h4>
+                <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
+              </div>
+
+            </div>
+            <div style={styler.tabBox}>
+
+              <div className="EachActv">
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
+                <h4>农业银行联合浙江车市网举办汽车节</h4>
+                <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
+              </div>
+              <div className="EachActv">
+                <div><img alt="农业银行联合浙江车市网举办汽车节" src="images/huodong.jpg" /></div>
                 <h4>农业银行联合浙江车市网举办汽车节</h4>
                 <p>国内领先的汽车互联网企业易车将于今年3月初推出业内首个“SUV购车节”，集结国内外众多一线SUV品牌，共同打造2017年首场汽</p>
               </div>

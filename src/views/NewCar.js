@@ -38,7 +38,7 @@ class NewCar extends Component {
       <div className="Page">
         <Header ref="headerRef" className="Page-header" title="新车"></Header>
         <Menusort fixed = {this.state.isFixedsort}></Menusort>
-        <ListBox dataurl="/datalist/newcarlist2.json" showTitle={false} options={{
+        <ListBox dataurl="datalist/newcarlist2.json" showTitle={false} options={{
             "listtype":"newcar",
             "title":"热销新车",
             "tolink":"/newcar"

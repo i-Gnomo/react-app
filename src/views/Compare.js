@@ -167,7 +167,7 @@ class Compare extends Component {
   getData = (_id) => {
     //获取数据
     var _this = this;
-    var carsUrl = '/datalist/car_compare.json?id='+ _id;
+    var carsUrl = 'datalist/car_compare.json?id='+ _id;
     axios.get(carsUrl,{ cancelToken: _this.source.token }).then(function(response){
       if(response.status === 200){
           if(response.data){

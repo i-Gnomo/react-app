@@ -27,7 +27,7 @@ class FilterList extends Component{
             qudong: "0",
             sitenumber: "0",
         };
-        this.filterUrl = '/datalist/filterItems.json';
+        this.filterUrl = 'datalist/filterItems.json';
         this.source = axios.CancelToken.source();
         
     }

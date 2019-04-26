@@ -33,7 +33,7 @@ class Content extends Component{
                     style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
                     >
                     <img
-                        src={`/images/${val}.jpg`}
+                        src={`images/${val}.jpg`}
                         alt=""
                         style={{ width: '100%', verticalAlign: 'top' }}
                         onLoad={() => {
@@ -56,19 +56,19 @@ class Content extends Component{
                 <WhiteSpace size="lg" style={{backgroundColor:"#eeeeee"}}/>
                 <MyForm></MyForm>
                 <WhiteSpace size="lg" style={{backgroundColor:"#eeeeee"}}/>
-                <ListBox dataurl="/datalist/newcarlist.json" showTitle={true} options={{
+                <ListBox dataurl="datalist/newcarlist.json" showTitle={true} options={{
                     "listtype":"newcar",
                     "title":"热销新车",
                     "tolink":"/newcar"
                 }}></ListBox>
                 <WhiteSpace size="lg" style={{backgroundColor:"#eeeeee"}}/>
-                <ListBox dataurl="/datalist/newslist.json" showTitle={true} options={{
+                <ListBox dataurl="datalist/newslist.json" showTitle={true} options={{
                     "listtype":"news",
                     "title":"最新资讯",
                     "tolink":"/news"
                 }}></ListBox>
                 <WhiteSpace size="lg" style={{backgroundColor:"#eeeeee"}}/>
-                <ListBox dataurl="/datalist/friendslist.json" showTitle={true} options={{
+                <ListBox dataurl="datalist/friendslist.json" showTitle={true} options={{
                     "listtype":"friends",
                     "title":"友情链接"
                 }}></ListBox>

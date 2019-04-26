@@ -41,7 +41,7 @@ class News extends Component {
       this.state = {
           listdata: []
       }
-      this.newsUrl = '/datalist/newslist2.json';
+      this.newsUrl = 'datalist/newslist2.json';
       this.source = axios.CancelToken.source(); 
   }
 

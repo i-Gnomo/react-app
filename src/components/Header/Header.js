@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 /**
  * <Button className="header-right-menu">
-        <img style={{width:"50%",verticalAlign:"middle"}} src="/images/header-more.png" alt="menu more" />
+        <img style={{width:"50%",verticalAlign:"middle"}} src="images/header-more.png" alt="menu more" />
     </Button>
  */
 class Header extends Component{
@@ -21,7 +21,7 @@ class Header extends Component{
                 rightContent={
                     this.props.righthome === true?
                     <Link to="/" className="header-right-menu" style={{backgroundColor:"transparent"}}>
-                        <img style={{width:"50%",verticalAlign:"middle"}} src="/images/header-home.png" alt="menu home" />
+                        <img style={{width:"50%",verticalAlign:"middle"}} src="images/header-home.png" alt="menu home" />
                     </Link>:null
                 }
                 >{_tit==='Logo'?<Logo>jeep</Logo>:_tit}

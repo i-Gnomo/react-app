@@ -26,7 +26,7 @@ class FilterList extends Component{
             initialFilter: {},
             checkedVal: {}
         }
-        this.filterUrl = '/datalist/filterItems.json';
+        this.filterUrl = 'datalist/filterItems.json';
         this.source = axios.CancelToken.source();
     }
 
