@@ -701,7 +701,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   border-radius: 50%;
 }
 .saleslead-list .am-list-body .am-list-item .am-list-thumb .saler-pic {
-  background: url("/images/space_saler.png");
+  background: url(~aliasimgurl/space_saler.png);
   background-size: cover;
 }
 .saleslead-list .am-list-body .am-list-item .am-list-line .am-list-extra {
@@ -723,12 +723,12 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   width: 14px;
   height: 14px;
   margin-right: 5px;
-  background: url("/images/icons-star.png");
+  background: url(~aliasimgurl/icons-star.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 .star-empty {
-  background: url("/images/icons-star-empty.png");
+  background: url(~aliasimgurl/icons-star-empty.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -890,7 +890,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   width: 3vmin;
   height: 3vmin;
   display: inline-block;
-  background: url("/images/compare_del.png") 0 0 no-repeat;
+  background: url(~aliasimgurl/compare_del.png) 0 0 no-repeat;
   background-size: cover;
 }
 .Compare-section .Compare-basic .main .addCompareCar {
@@ -1178,7 +1178,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   display: inline-block;
   width: 15px;
   height: 8px;
-  background: url("/images/ic-arrow.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-arrow.png) center center no-repeat;
   background-size: auto 100%;
   transform: rotate(0deg);
   margin: 0 0 0 10px;
@@ -1209,7 +1209,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   display: inline-block;
   width: 15px;
   height: 15px;
-  background: url("/images/ic-checked-right.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-checked-right.png) center center no-repeat;
   background-size: 100% auto;
   margin-top: .5rem;
   position: absolute;
@@ -1242,7 +1242,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   border-radius: 3px;
 }
 .Counter-section .counter-panel .counter-row .r-left-tit .r-cell-check.checked {
-  background: url("/images/ic-checked-left.png") center center no-repeat #c20c0c;
+  background: url(~aliasimgurl/ic-checked-left.png) center center no-repeat #c20c0c;
   background-size: cover;
 }
 .Counter-section .counter-panel .counter-row .r-right-price {
@@ -1255,7 +1255,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   display: inline-block;
   width: 8px;
   height: 14px;
-  background: url("/images/ic-arrow-select.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-arrow-select.png) center center no-repeat;
   background-size: auto 100%;
   position: absolute;
   top: .9rem;
@@ -1280,7 +1280,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   display: inline-block;
   width: 15px;
   height: 8px;
-  background: url("/images/ic-arrow.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-arrow.png) center center no-repeat;
   background-size: auto 100%;
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -1354,7 +1354,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   position: absolute;
   top: 0;
   right: 3px;
-  background: url("/images/ic-pop-close.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-pop-close.png) center center no-repeat;
   background-size: 34%;
 }
 .Pop-cover .pop-list .pop-title {
@@ -1383,7 +1383,7 @@ html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
   display: inline-block;
   width: 15px;
   height: 15px;
-  background: url("/images/ic-checked-right.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-checked-right.png) center center no-repeat;
   background-size: 100% auto;
   margin-top: .5rem;
   position: absolute;

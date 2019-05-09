@@ -40,7 +40,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: url("/images/ic-pop-close.png") center center no-repeat;
+  background: url(~aliasimgurl/ic-pop-close.png) center center no-repeat;
   background-size: 34%;
 }
 .Sms-layer .smscodeerror {
