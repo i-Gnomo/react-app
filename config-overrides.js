@@ -35,13 +35,12 @@ module.exports = function override(config, env) {
     return config;
 };
 */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { override, fixBabelImports, addWebpackAlias } = require('customize-cra');
 const path = require("path");
 
 const rewiredMap = () => config => {
   if(config.mode === 'production'){
-    console.log(require.resolve('url-loader'));
+    // console.log(require.resolve('url-loader'));
     config.module.rules[2].oneOf.splice(0,1,{
       test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
       use: [{
